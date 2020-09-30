@@ -209,15 +209,14 @@ Mỗi lần `add` hay `commit` GIT sẽ bỏ qua các file/folder mà không đ�
     $ git rebase -i head~3     (rebase 3 commit gần đây nhất)
     
     ====
-    # Sau lệnh này sẽ mở ra editor nên hãy sửa lại như sau rồi lưu lại
     
-    # (trước khi sửa) các commit cũ từ trên xuống dưới
+    # (trước khi sửa) các commit cũ từ trên xuống dưới (commit 3 là gần đây nhất)
     pick aa11bbc commit message 1
     pick b2c3c4d commit message 2
     pick 4e56fgh commit message 3
     ・・・
     
-    # (Sau khi sửa) Đổi commit cần sửa sang edit
+    # (Sau khi sửa) Đổi commit cần gộp thành 'pick' -> 'squash' hoặc viết tắt là 's'
     pick aa11bbc commit message 1
     squash(s) b2c3c4d commit message 2
     squash(s) 4e56fgh commit message 3
