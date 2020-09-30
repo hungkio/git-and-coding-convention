@@ -19,15 +19,8 @@ https://backlog.com/git-tutorial/vn/intro/intro1_1.html
         $ git config user.name "Example Kiaisoft"
         $ git config user.email "example@kiaisoft.com"
         ```
-**3. Cách hoạt động của GIT**
 
-![Git Operation](../images/git_operation.png)
-
-**4. Vòng đời trạng thái của file trong GIT**
-        
-![File Status Lifecycle](../images/file_status_lifecycle.png)
-
-**5. Các lệnh cơ bản của GIT:**
+**3. Các lệnh cơ bản của GIT:**
 
 - Lệnh `git clone`: Kéo source code từ remote repository về local 
     ```
@@ -78,7 +71,7 @@ https://backlog.com/git-tutorial/vn/intro/intro1_1.html
     $ git fetch
     ```  
 
-**6. Làm việc với nhánh trong GIT**
+**4. Làm việc với nhánh trong GIT**
 
 - Tạo nhánh `develop` từ nhánh base `master`
     ```
@@ -97,7 +90,7 @@ https://backlog.com/git-tutorial/vn/intro/intro1_1.html
     $ git branch -d develop
     ``` 
     
-**7. Ignoring Files**
+**5. Ignoring Files**
 
 - Nếu không muốn `GIT` theo dõi các file/folder không cần thiết thì có thể dụng file `.gitignore` để khai báo.
 Mỗi lần `add` hay `commit` GIT sẽ bỏ qua các file/folder mà không đẩy chúng vào repository.  
@@ -114,7 +107,7 @@ Mỗi lần `add` hay `commit` GIT sẽ bỏ qua các file/folder mà không đ�
      # ignore all .pdf files in the doc/ directory and any of its subdirectories
      doc/**/*.pdf
     ```
-**8. Các lệnh GIT nâng cao**
+**6. Các lệnh GIT nâng cao**
 - Liệt kê các thiết lập đang sử dụng
     ```
     $ git config --list
@@ -211,7 +204,33 @@ Mỗi lần `add` hay `commit` GIT sẽ bỏ qua các file/folder mà không đ�
     # Trở lại như cũ
     $ git rebase --continue
     ```
-**9. Cách sử dụng gitlab của công ty**
+ - Trường hợp muốn gộp một số commit trước đó (tính từ commit latest)
+    ```
+    $ git rebase -i head~3     (rebase 3 commit gần đây nhất)
+    
+    ====
+    # Sau lệnh này sẽ mở ra editor nên hãy sửa lại như sau rồi lưu lại
+    
+    # (trước khi sửa) các commit cũ từ trên xuống dưới
+    pick aa11bbc commit message 1
+    pick b2c3c4d commit message 2
+    pick 4e56fgh commit message 3
+    ・・・
+    
+    # (Sau khi sửa) Đổi commit cần sửa sang edit
+    pick aa11bbc commit message 1
+    squash(s) b2c3c4d commit message 2
+    squash(s) 4e56fgh commit message 3
+    ・・・
+    ====
+    
+    # Sau đó thì sửa tương tự
+    $ git commit --amend -m "combine commit"
+    
+    # Trở lại như cũ
+    $ git push origigin -f head 
+    ```
+**7. Cách sử dụng gitlab của công ty**
 
 - Tạo một cặp public/private key và thêm vào gitlab
 https://gitlab.kiaisoft.com/profile/keys
