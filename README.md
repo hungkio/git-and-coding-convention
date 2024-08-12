@@ -317,3 +317,24 @@ https://gitlab.kiaisoft.com/profile/keys
 
 
 **Lưu ý: Mọi người nên tham khảo template trước khi code**
+
+**Tips SSH nhanh: **
+
+Run eval `ssh-agent` to start ssh-agent
+
+Insert bellow code to ~/.ssh/config file to easy ssh to tci or ci server just by typing : ssh tci or ssh ci
+
+
+
+```
+Host tci
+    AddKeysToAgent yes
+    HostName 172.1.1.1
+    User hunghv
+    IdentityFile  ~/.ssh/stg_hunghv_id_rsa // link file key
+Host ci
+    AddKeysToAgent yes
+    HostName 172.1.1.1
+    User hunghv
+    IdentityFile  ~/.ssh/prd_hunghv_id_rsa // link file key
+```
